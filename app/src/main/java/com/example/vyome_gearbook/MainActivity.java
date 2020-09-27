@@ -61,11 +61,8 @@ public class MainActivity extends AppCompatActivity implements FragmentAddGear.E
                 editButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Bundle result = new Bundle();
                         if (pos < gearList.getCount() && pos >= 0) {
-                            result.putParcelable("gear", gearAdapter.getItem(pos));
-                            FragmentAddGear f = new FragmentAddGear();
-                            f.setArguments(result);
+                            FragmentAddGear f = FragmentAddGear.newInstance(gearAdapter.getItem(pos));
                             f.show(getSupportFragmentManager(), "EDIT_GEAR");
                             pos = -1;
                         }

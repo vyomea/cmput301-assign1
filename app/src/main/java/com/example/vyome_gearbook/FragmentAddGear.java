@@ -31,6 +31,15 @@ public class FragmentAddGear extends DialogFragment {
         void editGear(Gear gear, String date, String maker, String description, double price, String comment);
     }
 
+    static FragmentAddGear newInstance(Gear gear) {
+        Bundle args = new Bundle();
+        args.putParcelable("gear", gear);
+
+        FragmentAddGear fragment = new FragmentAddGear();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -55,6 +64,7 @@ public class FragmentAddGear extends DialogFragment {
         if (getArguments() != null) {
             gearArg = getArguments().getParcelable("gear");
 
+            assert gearArg != null;
             dateEditText.setText(gearArg.getDate());
             makerEditText.setText(gearArg.getMaker());
             descriptionEditText.setText(gearArg.getDescription());
