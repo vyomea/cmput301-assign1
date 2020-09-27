@@ -3,7 +3,9 @@ package com.example.vyome_gearbook;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Gear implements Parcelable {
+import java.io.Serializable;
+
+public class Gear implements Serializable {
 
 
     private String date;
@@ -69,37 +71,4 @@ public class Gear implements Parcelable {
         this.comment = comment;
     }
 
-    public Gear(Parcel pc) {
-        date = pc.readString();
-        maker = pc.readString();
-        description = pc.readString();
-        price = pc.readDouble();
-        comment = pc.readString();
-    }
-
-    public static final Parcelable.Creator<Gear> CREATOR = new Parcelable.Creator<Gear>() {
-        public Gear createFromParcel(Parcel pc) {
-            return new Gear(pc);
-        }
-
-        @Override
-        public Gear[] newArray(int size) {
-            return new Gear[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.date);
-        dest.writeString(this.maker);
-        dest.writeString(this.description);
-        dest.writeDouble(this.price);
-        dest.writeString(this.comment);
-
-    }
 }

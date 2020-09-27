@@ -33,7 +33,7 @@ public class FragmentAddGear extends DialogFragment {
 
     static FragmentAddGear newInstance(Gear gear) {
         Bundle args = new Bundle();
-        args.putParcelable("gear", gear);
+        args.putSerializable("gear", gear);
 
         FragmentAddGear fragment = new FragmentAddGear();
         fragment.setArguments(args);
@@ -62,7 +62,7 @@ public class FragmentAddGear extends DialogFragment {
         commentEditText = view.findViewById(R.id.comment_edit_text);
 
         if (getArguments() != null) {
-            gearArg = getArguments().getParcelable("gear");
+            gearArg = (Gear) getArguments().getSerializable("gear");
 
             assert gearArg != null;
             dateEditText.setText(gearArg.getDate());
