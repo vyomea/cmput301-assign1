@@ -94,6 +94,7 @@ public class FragmentAddGear extends DialogFragment {
                         String comment = commentEditText.getText().toString();
 
                         // Input validation, checking if all required fields are filled correctly
+                        // Regex expression is from here: https://stackoverflow.com/a/22061879/11656468
                         if (date.isEmpty() || maker.isEmpty() || description.isEmpty() || priceString.isEmpty() || price < 0 || maker.length() > 20
                             || description.length() > 40 || comment.length() > 20 || !Pattern.compile("^\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$").matcher(date).matches()) {
                             Toast toast = Toast.makeText(Objects.requireNonNull(getActivity()).getBaseContext(), "Enter valid values for the required fields", Toast.LENGTH_LONG);
